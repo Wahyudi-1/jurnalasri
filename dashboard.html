@@ -1,1 +1,162 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Dashboard</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>"></head><body><header><div class="x1">Jurnal Pelajaran</div><nav><span id="w_msg" style="margin-right:20px;color:var(--text-light);">...</span><button id="l_btn" class="c-btn c-btn-d">Logout</button></nav></header><nav class="s-nav"><button data-s="s1" class="c-btn n-btn">Jurnal</button><button data-s="s2" class="c-btn n-btn">Riwayat</button><button data-s="s3" class="c-btn n-btn">Siswa</button><button data-s="s4" class="c-btn n-btn">Pengguna</button></nav><main class="ctn"><div id="st_msg" class="st-msg" style="display:none;"></div><div id="ld_ind" class="ld-ov" style="display:none;"><div class="spn"></div></div><div id="s1" class="c-sec" style="display:none;"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.5rem;margin-bottom:1.5rem;"><div class="crd"><h5 style="color:var(--text-light);margin-bottom:.5rem;">Jurnal Bulan Ini</h5><h2 id="st_t1">...</h2></div><div class="crd"><h5 style="color:var(--text-light);margin-bottom:.5rem;">Tingkat Kehadiran</h5><h2 id="st_t2">...</h2></div><div class="crd"><h5 style="color:var(--text-light);margin-bottom:.5rem;">Mapel Terpopuler</h5><h2 id="st_t3">...</h2></div></div><div class="crd"><div class="ch">Input Jurnal</div><form id="f_j"><div class="fg"><div class="fg-i"><label for="f_t">Tahun Ajaran</label><select id="f_t" required></select></div><div class="fg-i"><label for="f_s">Semester</label><select id="f_s" required disabled></select></div><div class="fg-i"><label for="f_k">Kelas</label><select id="f_k" required disabled></select></div></div><hr style="margin:1.5rem 0;border:0;border-top:1px solid var(--border-color);"><div class="fg"><div class="fg-i"><label for="f_mp">Mata Pelajaran</label><select id="f_mp" required disabled></select></div><div class="fg-i"><label for="f_d">Tanggal</label><input type="date" id="f_d" required></div></div><div class="fg-i" style="margin-top:1.5rem;"><button id="ld_s_btn" class="c-btn c-btn-s c-btn-b">Tampilkan Siswa</button></div><div class="fg-i"><label for="f_p">Periode (Jam ke-)</label><input type="text" id="f_p" placeholder="Cth: 1-2, 5-6"></div><div class="fg-i"><label for="f_m">Materi</label><textarea id="f_m" rows="3" required></textarea></div><div class="fg-i"><label for="f_c">Catatan</label><textarea id="f_c" rows="3"></textarea></div><h4 style="margin-top:2rem;margin-bottom:1rem;">Presensi</h4><div class="t-ctn"><table><thead><tr><th>NISN</th><th>Nama</th><th>Kehadiran</th></tr></thead><tbody id="p_tbl"></tbody></table></div><div class="fg-i" style="margin-top:2rem;"><button id="s_j_btn" class="c-btn c-btn-p c-btn-b">Kumpulkan</button></div></form></div></div><div id="s2" class="c-sec" style="display:none;"><div class="crd"><div class="ch">Riwayat Jurnal</div><div id="r_f_f" class="fg"><div class="fg-i"><label for="r_f_t">Tahun Ajaran</label><select id="r_f_t"></select></div><div class="fg-i"><label for="r_f_s">Semester</label><select id="r_f_s" disabled></select></div><div class="fg-i"><label for="r_f_k">Kelas</label><select id="r_f_k" disabled></select></div><div class="fg-i"><label for="r_f_mp">Mapel</label><select id="r_f_mp" disabled></select></div><div class="fg-i"><label for="r_f_d1">Dari</label><input type="date" id="r_f_d1"></div><div class="fg-i"><label for="r_f_d2">Sampai</label><input type="date" id="r_f_d2"></div><div class="fg-i fg-i-f"><button id="f_r_btn" class="c-btn c-btn-p">Filter</button><button id="e_r_btn" class="c-btn c-btn-g" style="margin-left:10px;display:none;">Export</button></div></div><hr style="margin:2rem 0;border:0;border-top:1px solid var(--border-color);"><h4>Hasil</h4><div class="t-ctn"><table><thead><tr><th>Tgl</th><th>Kelas</th><th>Smstr</th><th>Mapel</th><th>Materi</th><th>Hadir</th><th>Aksi</th></tr></thead><tbody id="r_tbl"></tbody></table></div></div></div><div id="s3" class="c-sec" style="display:none;"><div class="crd"><div class="ch">Manajemen Siswa</div><form id="f_sw" class="fc"><input type="hidden" id="f_n_o"><div class="fg-i"><label for="f_n">NISN</label><input type="number" id="f_n" name="NISN" required></div><div class="fg-i"><label for="f_nm">Nama</label><input type="text" id="f_nm" name="Nama" required></div><div class="fg-i"><label for="f_kl">Kelas</label><input type="text" id="f_kl" name="Kelas"></div><div class="fg-i"><label for="f_ta">Thn Ajaran</label><input type="text" id="f_ta" name="TahunAjaran"></div><div class="fg-i"><label for="f_mpl">Mapel (pisah koma)</label><input type="text" id="f_mpl" name="MataPelajaran"></div><div class="fg-i"><label for="f_sms">Semester</label><input type="text" id="f_sms" name="Semester"></div><div class="f-act"><button type="submit" id="sv_sw_btn" class="c-btn c-btn-a">Simpan</button><button id="rst_sw_btn" class="c-btn c-btn-s">Batal</button></div></form><hr style="margin:2rem 0;border:0;border-top:1px solid var(--border-color);"><h4>Daftar Siswa</h4><div class="fg"><div class="fg-i"><label for="sr_in">Cari Siswa</label><input type="text" id="sr_in"></div><div class="fg-i" style="align-self:end;"><button id="sr_btn" class="c-btn c-btn-s">Cari</button><button id="ex_sw_btn" class="c-btn c-btn-g" style="margin-left:10px;">Export</button></div></div><div class="t-ctn"><table><thead><tr><th>NISN</th><th>Nama</th><th>Kelas</th><th>Thn Ajaran</th><th>Aksi</th></tr></thead><tbody id="sw_r_tbl"></tbody></table></div></div></div><div id="s4" class="c-sec" style="display:none;"><div class="crd"><div class="ch">Manajemen Pengguna</div><form id="f_pg" class="fc"><input type="hidden" id="f_u_o"><div class="fg-i"><label for="f_p_nm">Nama</label><input type="text" id="f_p_nm" required></div><div class="fg-i"><label for="f_u">Username</label><input type="text" id="f_u" required></div><div class="fg-i"><label for="f_pw">Password</label><input type="password" id="f_pw"><small>Kosongkan jika tidak diubah.</small></div><div class="fg-i"><label for="f_r">Peran</label><select id="f_r" required><option value="Admin">Admin</option><option value="Guru">Guru</option></select></div><div class="f-act"><button type="submit" id="sv_pg_btn" class="c-btn c-btn-a">Simpan</button><button id="rst_pg_btn" class="c-btn c-btn-s">Batal</button></div></form><hr style="margin:2rem 0;border:0;border-top:1px solid var(--border-color);"><h4>Daftar Pengguna</h4><div class="t-ctn"><table><thead><tr><th>Nama</th><th>Username</th><th>Peran</th><th>Aksi</th></tr></thead><tbody id="pg_r_tbl"></tbody></table></div></div></div></main><script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Jurnal Pelajaran Bu Asri Trisna Puspitas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+</head>
+
+<body>
+    <header>
+        <div class="logo">Jurnal Pelajaran Bu Asri Trisna Puspitas</div>
+        <nav>
+            <span id="welcomeMessage" style="margin-right: 20px; color: var(--text-light);">Memuat...</span>
+            <button id="logoutButton" class="btn btn-danger">Logout</button>
+        </nav>
+    </header>
+
+    <nav class="section-nav">
+        <button data-section="jurnalSection" class="btn btn-nav">Input Jurnal</button>
+        <button data-section="riwayatSection" class="btn btn-nav">Riwayat Jurnal</button>
+        <button data-section="siswaSection" class="btn btn-nav">Manajemen Siswa</button>
+        <button data-section="penggunaSection" class="btn btn-nav">Manajemen Pengguna</button>
+    </nav>
+
+    <main class="container">
+        <div id="statusMessage" class="status-message" style="display: none;"></div>
+        <div id="loadingIndicator" class="loading-overlay" style="display: none;">
+            <div class="spinner"></div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- Bagian 1: INPUT JURNAL                                 -->
+        <!-- ====================================================== -->
+        <div id="jurnalSection" class="content-section" style="display: none;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                <div class="card"><h5 style="color: var(--text-light); margin-bottom: 0.5rem;">Jurnal Bulan Ini</h5><h2 id="statTotalJurnal">...</h2></div>
+                <div class="card"><h5 style="color: var(--text-light); margin-bottom: 0.5rem;">Tingkat Kehadiran</h5><h2 id="statKehadiran">...</h2></div>
+                <div class="card"><h5 style="color: var(--text-light); margin-bottom: 0.5rem;">Mapel Terpopuler</h5><h2 id="statMapelTeratas">...</h2></div>
+            </div>
+            <div class="card">
+                <div class="card-header">Input Jurnal Pembelajaran</div>
+                <form id="formJurnal">
+                    <div class="form-grid">
+                        <div class="form-group"><label for="filterTahunAjaran">Tahun Ajaran</label><select id="filterTahunAjaran" required></select></div>
+                        <div class="form-group"><label for="filterSemester">Semester</label><select id="filterSemester" required disabled></select></div>
+                        <div class="form-group"><label for="filterKelas">Kelas</label><select id="filterKelas" required disabled></select></div>
+                    </div>
+                    <hr style="margin: 1.5rem 0; border: 0; border-top: 1px solid var(--border-color);">
+                    <div class="form-grid">
+                        <div class="form-group"><label for="filterMataPelajaran">Mata Pelajaran</label><select id="filterMataPelajaran" required disabled></select></div>
+                        <div class="form-group"><label for="tanggalPembelajaran">Tanggal Pembelajaran</label><input type="date" id="tanggalPembelajaran" required></div>
+                    </div>
+                    <div class="form-group" style="margin-top: 1.5rem;"><button type="button" id="loadSiswaButton" class="btn btn-secondary btn-block">Tampilkan Siswa untuk Presensi</button></div>
+                    <div class="form-group"><label for="periodePembelajaran">Periode Pembelajaran (Jam ke-)</label><input type="text" id="periodePembelajaran" placeholder="Contoh: 1-2, 5-6"></div>
+                    <div class="form-group"><label for="materiPembelajaran">Materi yang Diajarkan</label><textarea id="materiPembelajaran" rows="3" required></textarea></div>
+                    <div class="form-group"><label for="catatanPembelajaran">Catatan Selama Pembelajaran</label><textarea id="catatanPembelajaran" rows="3"></textarea></div>
+                    <h4 style="margin-top: 2rem; margin-bottom: 1rem;">Presensi Siswa</h4>
+                    <div class="table-container">
+                        <table>
+                            <thead><tr><th>NISN</th><th>Nama</th><th>Kehadiran</th></tr></thead>
+                            <tbody id="presensiTableBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="form-group" style="margin-top: 2rem;"><button type="button" id="submitJurnalButton" class="btn btn-primary btn-block">Kumpulkan Jurnal</button></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- Bagian 2: RIWAYAT JURNAL                               -->
+        <!-- ====================================================== -->
+        <div id="riwayatSection" class="content-section" style="display: none;">
+            <div class="card">
+                <div class="card-header">Riwayat Jurnal Pembelajaran</div>
+                <!-- [DIPERBAIKI] Atribut 'disabled' ditambahkan untuk filter bertingkat riwayat -->
+                <div id="riwayatFilterForm" class="form-grid">
+                    <div class="form-group"><label for="riwayatFilterTahunAjaran">Tahun Ajaran</label><select id="riwayatFilterTahunAjaran"></select></div>
+                    <div class="form-group"><label for="riwayatFilterSemester">Semester</label><select id="riwayatFilterSemester" disabled></select></div>
+                    <div class="form-group"><label for="riwayatFilterKelas">Kelas</label><select id="riwayatFilterKelas" disabled></select></div>
+                    <div class="form-group"><label for="riwayatFilterMapel">Mata Pelajaran</label><select id="riwayatFilterMapel" disabled></select></div>
+                    <div class="form-group"><label for="riwayatFilterTanggalMulai">Dari Tanggal</label><input type="date" id="riwayatFilterTanggalMulai"></div>
+                    <div class="form-group"><label for="riwayatFilterTanggalSelesai">Sampai Tanggal</label><input type="date" id="riwayatFilterTanggalSelesai"></div>
+                    <div class="form-group form-group-full"><button type="button" id="filterRiwayatButton" class="btn btn-primary">Terapkan Filter</button><button type="button" id="exportRiwayatButton" class="btn btn-success" style="margin-left: 10px; display: none;">Export ke Excel</button></div>
+                </div>
+                <hr style="margin: 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+                <h4>Hasil Pencarian Riwayat</h4>
+                <div class="table-container">
+                    <table>
+                        <thead><tr><th>Tanggal</th><th>Kelas</th><th>Semester</th><th>Mata Pelajaran</th><th>Materi</th><th>Kehadiran</th><th>Aksi</th></tr></thead>
+                        <tbody id="riwayatTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- Bagian 3: MANAJEMEN SISWA                              -->
+        <!-- ====================================================== -->
+        <div id="siswaSection" class="content-section" style="display: none;">
+            <div class="card">
+                <div class="card-header">Manajemen Database Siswa</div>
+                <!-- [DIPERBAIKI] Atribut 'name' disesuaikan dengan backend -->
+                <form id="formSiswa" class="form-container">
+                    <input type="hidden" id="formNisnOld">
+                    <div class="form-group"><label for="formNisn">NISN</label><input type="number" id="formNisn" name="NISN" placeholder="NISN Siswa" required></div>
+                    <div class="form-group"><label for="formNama">Nama Lengkap</label><input type="text" id="formNama" name="Nama" placeholder="Nama Siswa" required></div>
+                    <div class="form-group"><label for="formKelas">Kelas</label><input type="text" id="formKelas" name="Kelas" placeholder="Contoh: X-A"></div>
+                    <div class="form-group"><label for="formTahunAjaran">Tahun Ajaran</label><input type="text" id="formTahunAjaran" name="TahunAjaran" placeholder="Contoh: 2024/2025"></div>
+                    <div class="form-group"><label for="formMapel">Mata Pelajaran (pisahkan koma jika lebih dari satu)</label><input type="text" id="formMapel" name="MataPelajaran" placeholder="Contoh: Matematika, Fisika"></div>
+                    <div class="form-group"><label for="formSemesterSiswa">Semester</label><input type="text" id="formSemesterSiswa" name="Semester" placeholder="Contoh: Ganjil"></div>
+                    <div class="form-actions"><button type="submit" id="saveSiswaButton" class="btn btn-accent">Simpan Data Siswa</button><button type="button" id="resetSiswaButton" class="btn btn-secondary">Batal</button></div>
+                </form>
+                <hr style="margin: 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+                <h4>Daftar Siswa</h4>
+                <div class="form-grid">
+                    <div class="form-group"><label for="nisnSearchInput">Cari Siswa (NISN/Nama)</label><input type="text" id="nisnSearchInput" placeholder="Ketik untuk mencari..."></div>
+                    <div class="form-group" style="align-self: end;"><button type="button" id="searchButton" class="btn btn-secondary">Cari</button><button type="button" id="exportSiswaExcel" class="btn btn-success" style="margin-left: 10px;">Export</button></div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead><tr><th>NISN</th><th>Nama</th><th>Kelas</th><th>Tahun Ajaran</th><th>Aksi</th></tr></thead>
+                        <tbody id="siswaResultsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- Bagian 4: MANAJEMEN PENGGUNA                           -->
+        <!-- ====================================================== -->
+        <div id="penggunaSection" class="content-section" style="display: none;">
+            <div class="card">
+                <div class="card-header">Manajemen Pengguna</div>
+                <form id="formPengguna" class="form-container">
+                    <input type="hidden" id="formUsernameOld">
+                    <div class="form-group"><label for="formNamaPengguna">Nama Lengkap</label><input type="text" id="formNamaPengguna" placeholder="Contoh: Budi Santoso" required></div>
+                    <div class="form-group"><label for="formUsername">Username</label><input type="text" id="formUsername" placeholder="Username untuk login" required></div>
+                    <div class="form-group"><label for="formPassword">Password</label><input type="password" id="formPassword" placeholder="Isi untuk mengatur password baru"><small>Kosongkan jika tidak ingin mengubah password.</small></div>
+                    <div class="form-group"><label for="formPeran">Peran (Role)</label><select id="formPeran" required><option value="Admin">Admin</option><option value="Guru">Guru</option></select></div>
+                    <div class="form-actions"><button type="submit" id="savePenggunaButton" class="btn btn-accent">Simpan Pengguna</button><button type="button" id="resetPenggunaButton" class="btn btn-secondary">Batal</button></div>
+                </form>
+                <hr style="margin: 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+                <h4>Daftar Pengguna Sistem</h4>
+                <div class="table-container">
+                    <table>
+                        <thead><tr><th>Nama Lengkap</th><th>Username</th><th>Peran</th><th>Aksi</th></tr></thead>
+                        <tbody id="penggunaResultsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script> 
+    <script src="app.js"></script>
+</body>
+</html>
